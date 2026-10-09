@@ -7,6 +7,8 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
   common
+  ivory
+  nlohmann_json::nlohmann_json
 )
 
 if(BUILD_TESTING)

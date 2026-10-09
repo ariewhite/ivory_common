@@ -1,0 +1,6 @@
+# build directorie
+/build
+# compile commands for clangd
+compile_commands.json
+# indexs for clangd
+/.cache
