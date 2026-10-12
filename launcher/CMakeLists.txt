@@ -1,5 +1,6 @@
 add_library(ivory STATIC
   src/version.cpp
+  src/manifest.cpp
 )
 
 target_include_directories(ivory
