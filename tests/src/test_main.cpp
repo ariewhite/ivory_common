@@ -2,6 +2,7 @@
 #include <common/logger.h>
 #include <ivory/version.h>
 
+
 int main( int argc, char** argv )
 {
      logger::init( "Init" );

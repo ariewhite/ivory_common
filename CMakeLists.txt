@@ -8,11 +8,13 @@ enable_testing()
 option(BUILD_TESTING "Build tests" OFF)
 
 include(FetchContent)
-FetchContent_Declare(
-  json
-  URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz
-)
-FetchContent_MakeAvailable(json)
+
+# nlohmann
+find_package(nlohmann_json REQUIRED)
+
+# libcurl
+find_package(CURL REQUIRED)
+
 
 if(BUILD_TESTING)
   FetchContent_Declare(

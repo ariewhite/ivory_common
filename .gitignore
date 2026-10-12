@@ -4,3 +4,5 @@
 compile_commands.json
 # indexs for clangd
 /.cache
+# CMake user presets json
+CMakeUserPresets.json

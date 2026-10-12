@@ -9,4 +9,5 @@ target_include_directories(ivory
 target_link_libraries(ivory PRIVATE
   common
   nlohmann_json::nlohmann_json
+  CURL::libcurl
 )
