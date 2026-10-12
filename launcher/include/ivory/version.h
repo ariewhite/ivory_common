@@ -6,7 +6,7 @@
 
 #include <nlohmann/json.hpp>
 
-#include <common/types.h>
+#include <ivory/core/types.h>
 
 namespace ivo
 {

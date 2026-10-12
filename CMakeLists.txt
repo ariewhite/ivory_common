@@ -16,6 +16,7 @@ find_package(nlohmann_json REQUIRED)
 find_package(CURL REQUIRED)
 
 
+# tests
 if(BUILD_TESTING)
   FetchContent_Declare(
     googletest
@@ -25,6 +26,7 @@ if(BUILD_TESTING)
   FetchContent_MakeAvailable(googletest)
 endif()
 
-add_subdirectory(common)
+add_subdirectory(libs/core)
+add_subdirectory(libs/tasks)
 add_subdirectory(launcher)
 add_subdirectory(tests)

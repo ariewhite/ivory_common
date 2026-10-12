@@ -1,4 +1,4 @@
-#include "tasks/task_base.h"
+#include <ivory/tasks/task_base.h>
 #include <exception>
 
 namespace ivo

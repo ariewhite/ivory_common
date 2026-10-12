@@ -1,10 +1,10 @@
-#include <ivory/version.h>
+#include "ivory/version.h"
 
 #include <exception>
 #include <fstream>
 
-#include <common/logger.h>
-#include <common/types.h>
+#include <ivory/core/logger.h>
+#include <ivory/core/types.h>
 
 namespace ivo
 {

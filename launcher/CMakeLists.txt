@@ -1,13 +1,16 @@
-add_library(ivory STATIC
+add_library(ivory_launcher STATIC
   src/version.cpp
   src/manifest.cpp
 )
+add_library(ivory::laucnher ALIAS ivory_launcher)
 
-target_include_directories(ivory
-  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+message("library ${LIBRARY_OUTPUT_NAME}")
+
+target_include_directories(ivory_launcher
+  PUBLIC include
 )
 
-target_link_libraries(ivory PRIVATE
+target_link_libraries(ivory_launcher PRIVATE
   common
   nlohmann_json::nlohmann_json
   CURL::libcurl

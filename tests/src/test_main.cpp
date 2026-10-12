@@ -1,6 +1,6 @@
-#include "nlohmann/json_fwd.hpp"
-#include <common/logger.h>
-#include <ivory/version.h>
+#include "nlohmann/json.hpp"
+#include <ivory/core/logger.h>
+#include <ivory/core/version.h>
 
 
 int main( int argc, char** argv )
