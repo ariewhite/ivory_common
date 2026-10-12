@@ -1,11 +1,30 @@
 #include <ivory/version.h>
 
-namespace ivory
-{
+#include <exception>
+#include <fstream>
 
-std::pair< int, std::string > parse( const std::string_view path, nlohmann::json& ref )
+#include <common/logger.h>
+#include <common/types.h>
+
+namespace ivo
 {
-     return { -1, std::string( "Error with: " ) + std::string( path ) };
+using nlohmann::json;
+
+ivo::err_ptr parse( const std::string path, nlohmann::json& ref )
+{
+     try
+     {
+          std::ifstream f{ path };
+          if( !f ) return std::make_shared<err>( -1, "cannot open file" );
+          ref = json::parse( f );
+     }
+     catch( const std::exception& e )
+     {
+          logger::error( "exception while parsing json: {}, path: {}", e.what(), path );
+          return std::make_shared< ivo::err >( -1, "exception occured check logs" );
+     }
+
+     return nullptr;
 }
 
 } // ivory

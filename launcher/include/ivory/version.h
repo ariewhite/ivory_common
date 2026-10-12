@@ -6,9 +6,11 @@
 
 #include <nlohmann/json.hpp>
 
-namespace ivory
+#include <common/types.h>
+
+namespace ivo
 {
 
-std::pair< int, std::string > parse( const std::string_view path, nlohmann::json& ref );
+ivo::err_ptr parse( const std::string path, nlohmann::json& ref );
 
-} // ivory
+} // namespace ivo
