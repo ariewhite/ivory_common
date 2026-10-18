@@ -26,7 +26,7 @@ void base_task::cancel()
           on_cancel();
 }
 
-task_state base_task::state() const { state_.load(); }
+task_state base_task::state() const { return state_.load(); }
 
 bool base_task::is_done() const
 {
@@ -41,6 +41,8 @@ const task_error &base_task::error() const { return error_; }
 void base_task::on_progress( listener l ) { progress_listeners_.push_back( std::move( l ) ); }
 
 void base_task::on_finished( listener l ) { finished_listeners_.push_back( std::move( l ) ); }
+
+void base_task::on_cancel() {}
 
 void base_task::set_progress( uint64_t done, uint64_t total )
 {

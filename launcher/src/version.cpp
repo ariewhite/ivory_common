@@ -1,4 +1,4 @@
-#include "ivory/version.h"
+#include <ivory/version.h>
 
 #include <exception>
 #include <fstream>

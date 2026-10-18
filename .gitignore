@@ -6,3 +6,6 @@ compile_commands.json
 /.cache
 # CMake user presets json
 CMakeUserPresets.json
+# cfg json
+test.json
+

@@ -1,4 +1,7 @@
-add_library(ivory_tasks STATIC src/task_base.cpp)
+add_library(ivory_tasks STATIC
+  src/task_base.cpp
+  src/download_task.cpp
+)
 add_library(ivory::tasks ALIAS ivory_tasks)
 
 target_include_directories(ivory_tasks

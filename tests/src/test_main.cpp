@@ -1,6 +1,6 @@
 #include "nlohmann/json.hpp"
 #include <ivory/core/logger.h>
-#include <ivory/core/version.h>
+#include <ivory/version.h>
 
 
 int main( int argc, char** argv )
@@ -13,6 +13,6 @@ int main( int argc, char** argv )
      {
           logger::error( "{}", x->second );
      }
-     
+
      return 0;
 }
