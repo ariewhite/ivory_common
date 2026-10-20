@@ -10,6 +10,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
   ivory::tasks
   ivory::launcher
   nlohmann_json::nlohmann_json
+  OpenSSL::SSL
   CURL::libcurl
 )
 

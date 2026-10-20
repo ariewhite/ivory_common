@@ -15,6 +15,8 @@ find_package(nlohmann_json REQUIRED)
 # libcurl
 find_package(CURL REQUIRED)
 
+# openssl
+find_package(OpenSSL REQUIRED)
 
 # tests
 if(BUILD_TESTING)
@@ -26,6 +28,7 @@ if(BUILD_TESTING)
   FetchContent_MakeAvailable(googletest)
 endif()
 
+add_subdirectory(libs/net)
 add_subdirectory(libs/core)
 add_subdirectory(libs/tasks)
 add_subdirectory(launcher)
