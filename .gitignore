@@ -8,4 +8,6 @@ compile_commands.json
 CMakeUserPresets.json
 # cfg json
 test.json
+# test part
+test.part
 
