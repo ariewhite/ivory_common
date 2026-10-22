@@ -10,10 +10,10 @@ namespace ivo
 namespace paths
 {
 
-/// @brief Full path to executable
+/// @brief Full path to executable or error
 result<std::filesystem::path> executable_path();
 
-/// @brief Full path to dir, where located executable
+/// @brief Full path to dir, where located executable or error
 result<std::filesystem::path> executable_dir();
 
 /// @brief Return true, if portable version

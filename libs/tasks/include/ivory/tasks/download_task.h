@@ -4,7 +4,6 @@
 
 #include <filesystem>
 #include <string>
-#include <atomic>
 
 #include <ivory/tasks/task_base.h>
 
@@ -13,22 +12,20 @@ namespace ivo
 
 class download_task : public ivo::base_task
 {
-public:
-    download_task(std::string url, std::filesystem::path dest,
-                  std::string sha256);
+   public:
+     download_task( const std::string url, const std::filesystem::path dest, const std::string sha256 );
 
-    std::string name() const override;
+     std::string name() const override;
 
-protected:
-    void on_start() override;
-    void on_cancel() override;
+   protected:
+     void on_start() override;
+     void on_cancel() override;
 
-private:
-    std::string url_;
-    std::filesystem::path dest_;
-    /// @note hex, lowercase, empty - dont verify
-    std::string sha256_;
-    
+   private:
+     std::string url_;
+     std::filesystem::path dest_;
+     /// @note hex, lowercase, empty - dont verify
+     std::string sha256_;
 };
 
 } // namespace ivo

@@ -57,7 +57,7 @@ std::string to_hex( const unsigned char *d, unsigned len )
 
 namespace fs = std::filesystem;
 
-download_task::download_task( std::string url, std::filesystem::path dest, std::string sha256 )
+download_task::download_task( const std::string url, const std::filesystem::path dest, const std::string sha256 )
     : url_( url ), dest_( dest ), sha256_( sha256 )
 {
 }
@@ -137,7 +137,7 @@ void download_task::on_start()
                {
                     unsigned char digest[EVP_MAX_MD_SIZE];
                     unsigned len = 0;
-                    EVP_DigestFinal_ex(md.get(), digest, &len);
+                    EVP_DigestFinal_ex( md.get(), digest, &len );
                     if ( to_hex( digest, len ) != sha256_ )
                     {
                          throw std::runtime_error( "sha256 mismatch, file: " + dest_.filename().string() );
@@ -145,7 +145,7 @@ void download_task::on_start()
                }
 
                // cancelled
-               if( is_done() )
+               if ( is_done() )
                {
                     fs::remove( tmp, ec );
                     return;
