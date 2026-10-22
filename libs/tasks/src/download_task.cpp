@@ -57,8 +57,8 @@ std::string to_hex( const unsigned char *d, unsigned len )
 
 namespace fs = std::filesystem;
 
-download_task::download_task( const std::string url, const std::filesystem::path dest, const std::string sha256 )
-    : url_( url ), dest_( dest ), sha256_( sha256 )
+download_task::download_task( const std::string url, const std::filesystem::path dest, const std::string sha1 )
+    : url_( url ), dest_( dest ), sha1_( sha1 )
 {
 }
 
@@ -83,12 +83,12 @@ void download_task::on_start()
           throw std::runtime_error( "can not open " + tmp.string() );
 
      std::unique_ptr<EVP_MD_CTX, decltype( &EVP_MD_CTX_free )> md( nullptr, &EVP_MD_CTX_free );
-     // if sha256 present, should to check it
-     if ( !sha256_.empty() )
+     // if sha1 present, should to check it
+     if ( !sha1_.empty() )
      {
           md.reset( EVP_MD_CTX_new() );
-          if ( !md || EVP_DigestInit_ex( md.get(), EVP_sha256(), nullptr ) != 1 )
-               throw std::runtime_error( "sha256 init failed" );
+          if ( !md || EVP_DigestInit_ex( md.get(), EVP_sha1(), nullptr ) != 1 )
+               throw std::runtime_error( "sha1 init failed" );
           ctx.md = md.get();
      }
 
@@ -138,9 +138,9 @@ void download_task::on_start()
                     unsigned char digest[EVP_MAX_MD_SIZE];
                     unsigned len = 0;
                     EVP_DigestFinal_ex( md.get(), digest, &len );
-                    if ( to_hex( digest, len ) != sha256_ )
+                    if ( to_hex( digest, len ) != sha1_ )
                     {
-                         throw std::runtime_error( "sha256 mismatch, file: " + dest_.filename().string() );
+                         throw std::runtime_error( "sha1 mismatch, file: " + dest_.filename().string() );
                     }
                }
 

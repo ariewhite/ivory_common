@@ -13,7 +13,7 @@ namespace ivo
 class download_task : public ivo::base_task
 {
    public:
-     download_task( const std::string url, const std::filesystem::path dest, const std::string sha256 );
+     download_task( const std::string url, const std::filesystem::path dest, const std::string sha1 );
 
      std::string name() const override;
 
@@ -25,7 +25,7 @@ class download_task : public ivo::base_task
      std::string url_;
      std::filesystem::path dest_;
      /// @note hex, lowercase, empty - dont verify
-     std::string sha256_;
+     std::string sha1_;
 };
 
 } // namespace ivo
