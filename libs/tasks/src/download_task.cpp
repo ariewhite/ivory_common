@@ -163,6 +163,7 @@ void download_task::on_start()
 
      succeed();
 }
-void on_cancel() {}
+
+void download_task::on_cancel() {}
 
 } // namespace ivo

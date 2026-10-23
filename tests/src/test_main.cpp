@@ -6,6 +6,7 @@
 #include <ivory/core/logger.h>
 #include <ivory/net/init.h>
 #include <ivory/core/paths.h>
+#include <ivory/tasks/download_task.h>
 
 #include <curl/easy.h>
 #include <curl/curl.h>
@@ -26,9 +27,12 @@ struct data
 size_t write_callback( char *ptr, size_t size, size_t nmemb, data *userdata );
 int progress_callback( void *clientp, curl_off_t dltotal, curl_off_t dlnow, curl_off_t ultotal, curl_off_t ulnow );
 
+void download_test();
+
 int main( int argc, char **argv )
 {
      logger::info( "exe path: \"{}\"\ndir path: \"{}\"", ivo::paths::executable_path().value().string(), ivo::paths::executable_dir().value().string() );
+     download_test();
      return 1;
 
      namespace fs = std::filesystem;
@@ -121,4 +125,13 @@ std::string to_hex( const unsigned char* ptr, unsigned len)
      }
      logger::debug("sha256: {}", s);
      return s;
+}
+
+void download_test()
+{
+     auto path = ivo::paths::executable_dir().value();
+     path = path / "test.json";
+     auto x = ivo::download_task( "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json", path, "f09921bbfd54646ce1ddbe92caf6a8dce4502a9a" );
+
+     x.start();
 }

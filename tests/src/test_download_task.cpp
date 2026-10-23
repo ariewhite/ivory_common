@@ -13,8 +13,8 @@ namespace fs = std::filesystem;
 namespace
 {
 
-// sha256( "abc" )
-const std::string k_abc_sha256 = "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad";
+// sha1( "abc" )
+const std::string k_abc_sha256 = "f09921bbfd54646ce1ddbe92caf6a8dce4502a9a";
 
 std::string file_url( const fs::path &p )
 {
@@ -81,7 +81,7 @@ TEST_F( DownloadTaskTest, FailsOnHashMismatch )
      t.start();
 
      EXPECT_EQ( t.state(), ivo::task_state::failed );
-     EXPECT_NE( t.error().msg.find( "sha256 mismatch" ), std::string::npos ) << t.error().msg;
+     EXPECT_NE( t.error().msg.find( "sha1 mismatch" ), std::string::npos ) << t.error().msg;
      EXPECT_FALSE( fs::exists( dest_ ) );
      EXPECT_FALSE( fs::exists( fs::path( dest_ ).concat( ".part" ) ) );
 }
