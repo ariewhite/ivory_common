@@ -10,4 +10,5 @@ CMakeUserPresets.json
 test.json
 # test part
 test.part
-
+# IDE dirs
+.vscode/

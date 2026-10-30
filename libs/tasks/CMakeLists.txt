@@ -10,4 +10,6 @@ target_include_directories(ivory_tasks
 target_link_libraries(ivory_tasks PUBLIC
   ivory::core
   ivory::net
+  OpenSSL::Crypto
+  OpenSSL::SSL
 )

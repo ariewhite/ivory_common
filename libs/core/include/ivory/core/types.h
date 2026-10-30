@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 #include <expected>
+#include <system_error>
 
 namespace ivo
 {

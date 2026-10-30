@@ -21,6 +21,8 @@ add_executable(ivorym src/test_main.cpp)
 target_link_libraries(ivorym PRIVATE
   ivory::core
   ivory::net
+  ivory::tasks
+  OpenSSL::SSL
   OpenSSL::Crypto
   CURL::libcurl
 )

@@ -102,7 +102,7 @@ result<fs::path> raw_executable_path()
                                     return ok ? std::strlen( p ) : std::size_t{ 0 };
                                } );
      if ( !ok )
-          return fail( std::errc::bad_address );
+          return std::unexpected( std::make_error_code( std::errc::bad_address ) );
      return fs::path( buf );
 #else
      std::string buf;
