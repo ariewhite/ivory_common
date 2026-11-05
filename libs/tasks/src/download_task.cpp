@@ -151,6 +151,7 @@ void download_task::on_start()
                     return;
                }
 
+               ctx.out.close();
                fs::rename( tmp, dest_ );
           }
      }
