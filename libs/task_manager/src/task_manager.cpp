@@ -7,6 +7,10 @@ namespace ivo
 
 task_manager::task_manager(size_t threads) : threads_(threads)
 {
+    if (threads_ <= 0)
+    {
+        throw std::runtime_error("task_manager(): threads count me be positive integer");
+    }
 }
 
 task_manager::~task_manager()
@@ -15,11 +19,7 @@ task_manager::~task_manager()
 
 void task_manager::worker_loop(std::stop_token token)
 {
-
 }
 
-// // blocking copy
-// task_manager(const task_manager &) = delete;
-// task_manager *operator=(const task_manager &) = delete;
 
 } // namespace ivo
